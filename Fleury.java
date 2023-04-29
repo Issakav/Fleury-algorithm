@@ -10,7 +10,7 @@ public class Fleury {
                 return n;
             }
         }
-        return null;
+        return null; 
     }
 
     public int dfs(Node prev, Node start, ArrayList<Node> visited){
@@ -39,5 +39,36 @@ public class Fleury {
             return false;
         }
         return true;
+    }
+
+
+    public void fleuryAlgorithm(Node startNode, int edges, int vertices){
+        int numEdges = edges;
+        int numVertices = vertices;
+
+        for (Node node : startNode.getAdjacencyList()) {
+            
+            ArrayList<Node> visited = new ArrayList<Node>();
+
+            if (isBridge(startNode, node)){
+                numVertices--;
+            }
+
+            int count = dfs(startNode, node, visited);
+
+            if ((numVertices - count) <= 2){
+                
+                System.out.println(startNode.name + " -> " + node.name);
+
+                if (isBridge(startNode, node)){
+                    numVertices--;
+                }
+
+                node.adjacencyList.remove(startNode);
+                startNode.adjacencyList.remove(node);
+                numEdges--;
+                fleuryAlgorithm(node, numEdges, numVertices);
+        }
+
     }
 }

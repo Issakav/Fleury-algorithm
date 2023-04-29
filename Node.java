@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class Node {
     ArrayList<Node> adjacencyList;
+    String name;
 
-    public Node(){
-
+    public Node(String name){
+        this.name = name;
     }
 
     public ArrayList<Node> getAdjacencyList() {
