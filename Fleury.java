@@ -68,6 +68,7 @@ public class Fleury {
                 startNode.adjacencyList.remove(node);
                 numEdges--;
                 fleuryAlgorithm(node, numEdges, numVertices);
+            }
         }
 
     }
