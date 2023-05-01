@@ -6,6 +6,7 @@ public class Node {
 
     public Node(String name){
         this.name = name;
+        this.adjacencyList = new ArrayList<Node>();
     }
 
     public ArrayList<Node> getAdjacencyList() {
