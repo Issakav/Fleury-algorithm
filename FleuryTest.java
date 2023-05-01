@@ -29,12 +29,20 @@ public class FleuryTest {
         five.addAdjacent(six);
         six.addAdjacent(four);
         six.addAdjacent(five);
+
+
         return one;
     }
 
     public static void main(String[] args) {
         Node startNode = graphCreation(one, two, three, four, five, six);
         Fleury fleury = new Fleury();
+        fleury.addToGraph(one);
+        fleury.addToGraph(two);
+        fleury.addToGraph(three);
+        fleury.addToGraph(four);
+        fleury.addToGraph(five);
+        fleury.addToGraph(six);
         fleury.fleuryAlgorithm(startNode, 10, 6);
     }
 }

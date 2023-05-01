@@ -1,7 +1,19 @@
 import java.util.ArrayList;
 
+import javax.swing.text.html.FormView;
+
 public class Fleury {
+
+
+
     ArrayList<Node> graph = new ArrayList<Node>();
+
+    ArrayList<Boolean> visited = new ArrayList<Boolean>(6);
+
+
+    public void addToGraph(Node node){
+        graph.add(node);
+    }
 
     public Node findStartVert(ArrayList<Node> graph) {
         for (Node n: graph) {
@@ -13,16 +25,16 @@ public class Fleury {
         return null; 
     }
 
-    public int dfs(Node prev, Node start, ArrayList<Node> visited){
+    public int dfs(Node prev, Node start){
         int count = 1;
-        if (!(visited.contains(start))) {
-            visited.add(start);
+        if (!(visited.get(graph.indexOf(start)))) {
+            visited.set(graph.indexOf(start),true);
         }
         for (Node n: graph) {
             if (!(prev == n)) {
-                if (!(visited.contains(n))) {
+                if (!(visited.get(graph.indexOf(n)))) {
                     if (n.getAdjacencyList().contains(start)) {
-                        count = count + dfs(start, n, visited);
+                        count = count + dfs(start, n);
                     }
                 }
             }
@@ -43,20 +55,25 @@ public class Fleury {
 
 
     public void fleuryAlgorithm(Node startNode, int edges, int vertices){
+
+
+        for (int i = 0; i < 6; i++) {
+            visited.add(false);
+        }
         int numEdges = edges;
         int numVertices = vertices;
 
         for (Node node : startNode.getAdjacencyList()) {
             
-            ArrayList<Node> visited = new ArrayList<Node>();
+            visited.set(graph.indexOf(startNode), false);
 
             if (isBridge(startNode, node)){
                 numVertices--;
             }
 
-            int count = dfs(startNode, node, visited);
+            int count = dfs(startNode, node);
 
-            if ((numVertices - count) <= 2){
+            if (Math.abs(numVertices - count) <= 2){
                 
                 System.out.println(startNode.name + " -> " + node.name);
 
