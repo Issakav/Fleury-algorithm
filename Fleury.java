@@ -10,6 +10,12 @@ public class Fleury {
 
     ArrayList<Boolean> visited = new ArrayList<Boolean>(6);
 
+    public void initializeVisited(){
+        for (int i = 0; i < 6; i++) {
+            visited.add(false);
+        }
+    }
+
 
     public void addToGraph(Node node){
         graph.add(node);
@@ -57,9 +63,6 @@ public class Fleury {
     public void fleuryAlgorithm(Node startNode, int edges, int vertices){
 
 
-        for (int i = 0; i < 6; i++) {
-            visited.add(false);
-        }
         int numEdges = edges;
         int numVertices = vertices;
 

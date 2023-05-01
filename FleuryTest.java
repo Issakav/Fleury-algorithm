@@ -43,6 +43,7 @@ public class FleuryTest {
         fleury.addToGraph(four);
         fleury.addToGraph(five);
         fleury.addToGraph(six);
+        fleury.initializeVisited();
         fleury.fleuryAlgorithm(startNode, 10, 6);
     }
 }
