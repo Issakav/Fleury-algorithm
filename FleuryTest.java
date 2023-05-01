@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class FleuryTest {
-    Node one = new Node("one");
-    Node two = new Node("two");
-    Node three = new Node("three");
-    Node four = new Node("four");
-    Node five = new Node("five");
-    Node six = new Node("six");
+    static Node one = new Node("one");
+    static Node two = new Node("two");
+    static Node three = new Node("three");
+    static Node four = new Node("four");
+    static Node five = new Node("five");
+    static Node six = new Node("six");
 
     public static Node graphCreation(Node one, Node two, Node three, Node four, Node five, Node six) {
         one.addAdjacent(two);
@@ -33,7 +33,7 @@ public class FleuryTest {
     }
 
     public static void main(String[] args) {
-        Node startNode = graphCreation(new Node("one"), new Node("two"), new Node("three"), new Node("four"), new Node("five"), new Node("six"));
+        Node startNode = graphCreation(one, two, three, four, five, six);
         Fleury fleury = new Fleury();
         fleury.fleuryAlgorithm(startNode, 10, 6);
     }
